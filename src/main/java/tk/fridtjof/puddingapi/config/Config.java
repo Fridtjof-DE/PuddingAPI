@@ -14,7 +14,10 @@ public class Config {
 	
 	private static String file_path = new String();
 	private static String file_name = new String();
+	
+	private static String prefix = "[CONFIG]: ";
 	private static String str_ind = "\"";
+	private static String char_ind = "'";
 	
 	public Config(String path, String name) {
 		file_path = path;
@@ -33,9 +36,9 @@ public class Config {
 				writer.write("Date of creation: " + dtf.format(now));
 				writer.close();
 				
-			    System.out.println("File is created!");
+			    System.out.println(prefix + "File is created!");
 			} else {
-			    System.out.println("File already exists.");
+			    System.out.println(prefix + "File already exists.");
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -67,16 +70,6 @@ public class Config {
 		return exist;
 	}
 	
-	
-	
-	//String-----------------------------------------------------------
-	
-	public void setDefault(String index, String value) {
-		if(!checkIndex(index)) {
-			setValue(index, value);
-		}
-	}
-	
 	private String getValue(String index, String indicator) {
 		String line = null;
 		boolean exists = false;
@@ -94,7 +87,7 @@ public class Config {
 	        }
 	    scanner.close();  
 	    } 
-	    catch (FileNotFoundException e) {
+	    catch(FileNotFoundException e) {
 	        e.printStackTrace();
 	    }
 		
@@ -107,7 +100,7 @@ public class Config {
 		}
 	}
 	
-	public void setValue(String index, String value) {
+	public void valueSetter(String index, String value, String indicator) {
 		String line = null;
 		
 		List<String> lines = new ArrayList<String>();
@@ -130,8 +123,8 @@ public class Config {
 			
 			if(!check) {
 	        	for (String line1 : lines) {
-	        		if(line1.matches("^>-" + index + "=" + str_ind + ".*" + str_ind + ";$")) {
-	        			line1 = line1.replaceAll("^>-" + index + "=" + str_ind + ".*" + str_ind + ";$", ">-" +  index + "=" + str_ind + value + str_ind + ";");
+	        		if(line1.matches("^>-" + index + "=.*;$")) {
+	        			line1 = line1.replaceAll("^>-" + index + "=.*;$", ">-" +  index + "=" + indicator + value + indicator + ";");
 	        		} else {
 	        		}
 	        	writer.write(line1 + "\n");
@@ -141,7 +134,7 @@ public class Config {
 				for (String line1 : lines) {
 					writer.write(line1 + "\n");
 				}
-				writer.write(">-" + index + "=\"" + value + "\";");
+				writer.write(">-" + index + "=" + indicator + value + indicator + ";");
 				}
 			writer.close();
 		} catch (IOException e) {
@@ -149,9 +142,145 @@ public class Config {
 		}
     }
 	
-	
+	//String ----------------------------------
 	
 	public String getString(String index) {
-		return getValue(index, str_ind);	
+		return getValue(index, str_ind);
+	}
+	
+	public void setValue(String index, String value) {
+		valueSetter(index, value, str_ind);
+	}
+	
+	public void setDefault(String index, String value) {
+		if(!checkIndex(index)) {
+			setValue(index, value);
+		}
+	}
+	
+	//Char ----------------------------------
+	
+	public char getChar(String index) {
+		char out = 0;
+		try {
+			out = getValue(index, char_ind).charAt(0);
+		} catch(NullPointerException e) {
+			System.out.println(prefix + index + " is not a char!");
+		}
+		return out;
+	}
+	
+	public void setValue(String index, char value) {
+		valueSetter(index, Character.toString(value), char_ind);
+	}
+	
+	public void setDefault(String index, char value) {
+		if(!checkIndex(index)) {
+			setValue(index, value);
+		}
+	}
+	
+	//Int ----------------------------------
+	
+	public int getInt(String index) {
+		int out = 0;
+		try {
+			out = Integer.parseInt(getValue(index, ""));
+		} catch(NumberFormatException e) {
+			System.out.println(prefix + index + " is not an integner!");
+		}
+		return out;
+	}
+	
+	//Long ----------------------------------
+	
+	public long getLong(String index) {
+		long out = 0;
+		String in = getValue(index, "");
+		if(in != null) {
+			try {
+				out = Long.parseLong(in);
+			} catch(NumberFormatException e) {
+				System.out.println(prefix + index + " is not a long!");
+			}
+		}
+		return out;
+	}
+	
+	public void setValue(String index, long value) {
+		valueSetter(index, "" + value, "");
+	}
+	
+	public void setDefault(String index, int value) {
+		if(!checkIndex(index)) {
+			setValue(index, value);
+		}
+	}
+	
+	//Double ----------------------------------
+	
+	public double getDouble(String index) {
+		double out = 0;
+		String in = getValue(index, "");
+		if(in != null) {
+			try {
+				out = Double.parseDouble(in);
+			} catch(NumberFormatException e) {
+				System.out.println(prefix + index + " is not a double!");
+			}
+		}
+		return out;
+	}
+	
+	public void setValue(String index, double value) {
+		valueSetter(index, "" + value, "");
+	}
+	
+	public void setDefault(String index, double value) {
+		if(!checkIndex(index)) {
+			setValue(index, value);
+		}
+	}
+	
+	//Float ----------------------------------
+	
+	public float getFloat(String index) {
+		float out = 0;
+		String in = getValue(index, "");
+		if(in != null) {
+			try {
+				out = Float.parseFloat(getValue(index, ""));
+			} catch(NumberFormatException e) {
+				System.out.println(prefix + index + " is not a float!");
+			}
+		}
+		return out;
+	}
+	
+	//Boolean ----------------------------------
+	
+	public boolean getBoolean(String index) {
+		boolean bool = false;
+		String in = getValue(index, "");
+		if(in != null) {
+			if(in.equalsIgnoreCase("true")) {
+				bool = true;
+			} else if(in.equalsIgnoreCase("false")) {
+				bool = false;
+			} else {
+				System.out.println(prefix + index + " is not a boolean!");
+			}
+		}
+		return bool;
+	}
+	
+	public void setValue(String index, boolean value) {
+		valueSetter(index, value + "", "");
+	}
+	
+	public void setDefault(String index, boolean value) {
+		if(!checkIndex(index)) {
+			setValue(index, value);
+		}
 	}
 }
