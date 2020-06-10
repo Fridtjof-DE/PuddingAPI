@@ -1,4 +1,4 @@
-package tk.fridtjof.puddingapi.config;
+package tk.fridtjof.puddingapi.utils;
 
 import java.io.File;
 import java.io.FileNotFoundException;
