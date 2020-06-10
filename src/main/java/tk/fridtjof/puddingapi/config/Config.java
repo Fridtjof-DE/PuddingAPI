@@ -36,9 +36,9 @@ public class Config {
 				writer.write("Date of creation: " + dtf.format(now));
 				writer.close();
 				
-			    System.out.println(prefix + "File is created!");
+			    //System.out.println(prefix + "File is created!");
 			} else {
-			    System.out.println(prefix + "File already exists.");
+			    //System.out.println(prefix + "File already exists.");
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
