@@ -6,7 +6,7 @@
 ## Config Example
 
 ```java
-import tk.fridtjof.puddingapi.config.Config;
+import tk.fridtjof.puddingapi.utils.Config;
 
 class SomeClass {
 	void doStuff() {
