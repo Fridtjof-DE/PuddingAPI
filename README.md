@@ -33,7 +33,7 @@ class SomeClass {
   <dependency>
     <groupId>tk.fridtjof</groupId>
     <artifactId>puddingapi</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
   </dependency
 </dependencies>
 ```
