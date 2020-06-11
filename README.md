@@ -16,6 +16,7 @@ class SomeClass {
 		if(cfg.getBoolean("some_boolean")) {
 				System.out.println(cfg.getString("some_string"));
 		}
+	}
 }
 ```
 ---
