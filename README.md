@@ -18,5 +18,24 @@ class SomeClass {
 		}
 }
 ```
+---
+## Maven Repository
+  
+```maven
+<repositories>
+  <repository>
+    <id>fridtjofsRepo</id>
+    <url>https://www.fridtjof.tk/repo</url>
+  </repository>
+</repositories>
+
+<dependencies>
+  <dependency>
+    <groupId>tk.fridtjof</groupId>
+    <artifactId>puddingapi</artifactId>
+    <version>1.0.0</version>
+  </dependency
+</dependencies>
+```
 
 ---
