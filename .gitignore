@@ -3,3 +3,6 @@
 .classpath
 .gitattributes
 .project
+pom.xml
+pom.xml
+*.jar

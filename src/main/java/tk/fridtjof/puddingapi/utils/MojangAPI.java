@@ -26,6 +26,6 @@ public class MojangAPI {
 			e.printStackTrace();
 		}
        
-        return "null";
+        return null;
     }
 }
