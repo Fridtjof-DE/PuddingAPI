@@ -1,5 +1,7 @@
 package tk.fridtjof.puddingapi.bukkit.utils;
 
+//Copy of https://github.com/Bastian/bStats-Metrics/blob/master/bstats-bukkit/src/main/java/org/bstats/bukkit/Metrics.java
+
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
