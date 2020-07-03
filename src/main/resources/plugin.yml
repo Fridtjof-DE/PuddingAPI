@@ -1,0 +1,15 @@
+name: PuddingAPI
+version: ${project.version}
+main: tk.fridtjof.puddingapi.bukkit.PuddingAPI
+api-version: 1.16
+authors: [Fridtjof_DE]
+description: Fridtjof_DE's Java API
+website: https://www.fridtjof.tk/
+
+commands:
+  puddingapi:
+    description: PuddingAPI...
+
+permissions:
+  puddingapi.update:
+    description: Grants permission to get the update msg.
