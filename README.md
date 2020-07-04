@@ -34,7 +34,7 @@ class SomeClass {
   <dependency>
     <groupId>tk.fridtjof</groupId>
     <artifactId>puddingapi</artifactId>
-    <version>1.0.1</version>
+    <version>2.0.0</version>
   </dependency
   <dependency>
     <groupId>com.googlecode.json-simple</groupId>
