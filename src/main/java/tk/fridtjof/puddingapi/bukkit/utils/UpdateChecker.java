@@ -29,12 +29,8 @@ public class UpdateChecker {
     private String perm;
     private String pluginName;
 
-    //Constants. Customize to your liking.
-    private int id = 0; //The ID of your resource. Can be found in the resource URL.
+    private int id = 0;
     private final String ERR_MSG = "&cUpdate checker failed!";
-    //private static final String UPDATE_MSG = "&cA new version of Missing_Colors is available at:&b https://www.spigotmc.org/resources/" + ID + "/updates";
-    //PermissionDefault.FALSE == OPs need the permission to be notified.
-    //PermissionDefault.TRUE == all OPs are notified regardless of having the permission.
     private Permission updatePerm;
     private final long CHECK_INTERVAL = 12_000; //In ticks.
 
@@ -53,15 +49,13 @@ public class UpdateChecker {
         new BukkitRunnable() {
             @Override
             public void run() {
-                //The request is executed asynchronously as to not block the main thread.
                 Bukkit.getScheduler().runTaskAsynchronously(javaPlugin, () -> {
-                    //Request the current version of your plugin on SpigotMC.
                     try {
                         final HttpsURLConnection connection = (HttpsURLConnection) new URL("https://api.spigotmc.org/legacy/update.php?resource=" + id).openConnection();
                         connection.setRequestMethod("GET");
                         spigotPluginVersion = new BufferedReader(new InputStreamReader(connection.getInputStream())).readLine();
                     } catch (final IOException e) {
-                        logger.info(ERR_MSG);
+                        logger.warn(ERR_MSG);
                         e.printStackTrace();
                         cancel();
                         return;
@@ -69,12 +63,16 @@ public class UpdateChecker {
 
                     String UPDATE_MSG = "&c" + "Version " + spigotPluginVersion + " is available at:&b https://www.spigotmc.org/resources/" + id + "/updates &c- version " + localPluginVersion + " is installed!";
 
-                    //Check if the requested version is the same as the one in your plugin.yml.
-                    if (localPluginVersion.equals(spigotPluginVersion)) return;
+                    try {
+                        int newV = Integer.parseInt(spigotPluginVersion.replaceAll("\\.", ""));
+                        int thisV = Integer.parseInt(spigotPluginVersion.replaceAll("\\.", ""));
+                        if (newV <= thisV) return;
+                    } catch(NumberFormatException exception) {
+                        if (localPluginVersion.equals(spigotPluginVersion)) return;
+                    }
 
                     logger.warn(ChatColor.translateAlternateColorCodes('&',UPDATE_MSG));
 
-                    //Register the PlayerJoinEvent
                     Bukkit.getScheduler().runTask(javaPlugin, () -> Bukkit.getPluginManager().registerEvents(new Listener() {
                         @EventHandler(priority = EventPriority.MONITOR)
                         public void onPlayerJoin(final PlayerJoinEvent event) {
@@ -84,7 +82,7 @@ public class UpdateChecker {
                         }
                     }, javaPlugin));
 
-                    cancel(); //Cancel the runnable as an update has been found.
+                    cancel();
                 });
             }
         }.runTaskTimer(javaPlugin, 0, CHECK_INTERVAL);

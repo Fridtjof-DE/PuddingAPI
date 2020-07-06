@@ -1,8 +1,8 @@
 package tk.fridtjof.puddingapi.bukkit.utils;
 
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
+import tk.fridtjof.puddingapi.bukkit.chat.ChatAPI;
 
 public class Logger {
 
@@ -33,7 +33,7 @@ public class Logger {
     }
 
     private void print(String msg, String prefix) {
-        msg = ChatColor.translateAlternateColorCodes('&', msg);
+        msg = ChatAPI.format(msg);
         msg = prefix + "[" + plugin.getName() + "] " + msg;
         Bukkit.getServer().getConsoleSender().sendMessage(msg);
     }

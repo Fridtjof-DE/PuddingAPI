@@ -8,6 +8,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class RecipeMaker {
 
+    //TODO This class is WIP - Do not try to use it!
+
     public static void shapedRecipe(Material output, String row0, String row1, String row2, Material ingredient0, JavaPlugin javaPlugin) {
         ItemStack itemStack = new ItemStack(output);
 

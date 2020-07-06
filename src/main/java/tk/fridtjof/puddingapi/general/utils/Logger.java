@@ -11,22 +11,34 @@ public class Logger {
     private String threadName = "Unknown Thead";
     private boolean debugMode = false;
 
+    public Logger(String threadName) {
+        this.threadName = threadName;
+    }
+
     public Logger(String threadName, boolean debugMode) {
         this.threadName = threadName;
         this.debugMode = debugMode;
     }
 
     public void info(String msg) {
-        System.out.println("[" + dtf.format(now) + "] [" + threadName + "/INFO] " + msg);
+        print("INFO", msg);
     }
 
     public void error(String msg) {
-        System.out.println("[" + dtf.format(now) + "] [" + threadName + "/ERROR] " + msg);
+        print("ERROR", msg);
+    }
+
+    public void warn(String msg) {
+        print("WARN", msg);
     }
 
     public void debug(String msg) {
         if(debugMode) {
-            System.out.println("[" + dtf.format(now) + "] [" + threadName + "/DEBUG] " + msg);
+            print("DEBUG", msg);
         }
+    }
+
+    private void print(String type, String msg) {
+        System.out.println("[" + dtf.format(now) + "] [" + threadName + "/" + type + "] " + msg);
     }
 }
