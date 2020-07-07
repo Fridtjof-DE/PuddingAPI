@@ -29,11 +29,10 @@ class SomeClass {
 	//Get uuid from username
 	String uuid = MojangAPI.getUuidFromUserName("Fridtjof_DE");
 	
-	
 	//Replaces '&' colorcodes with '§'
-	String test1 = ChatAPI.format('&', §bTest);
+	String test1 = ChatAPI.format('&', "§bTest");
 	//Default char is '&'
-	String test2 = ChatAPI.format(§bTest);
+	String test2 = ChatAPI.format("§bTest");
 	
 	//Get a player head from name
 	ItemStack itemStack = PlayerHead.getSkullFromOwner("Fridtjof_DE");
@@ -53,17 +52,12 @@ class SomeClass {
 
 	//The boolean toggles if debug msgs should be printed
 	Logger logger = new Logger("ThreadName", true);
-	logger.info("Doing stuff");
+	
 	
 	void doStuff() {
 		new UpdateChecker("current version", "updateCheckTxtUrl", "update website");
-	
-		Config cfg = new Config("C:/Users/Human/Desktop/", "config_file_name");
-		cfg.setValue("some_int", 122);
-		cfg.setDefault("some_string", "hi");
-		if(cfg.getBoolean("some_boolean")) {
-				System.out.println(cfg.getString("some_string"));
-		}
+		
+		logger.info("Doing stuff");
 	}
 }
 ```
@@ -76,7 +70,6 @@ class SomeClass {
 class SomeClass {
 	
 	void doStuff() {
-		
 		Config cfg = new Config("C:/Users/Human/Desktop/", "config_file_name");
 		cfg.setValue("some_int", 122);
 		cfg.setDefault("some_string", "hi");
