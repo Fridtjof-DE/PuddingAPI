@@ -36,16 +36,6 @@ class SomeClass {
     <artifactId>puddingapi</artifactId>
     <version>2.0.0</version>
   </dependency
-  <dependency>
-    <groupId>com.googlecode.json-simple</groupId>
-    <artifactId>json-simple</artifactId>
-    <version>1.1.1</version>
-  </dependency>
-  <dependency>
-    <groupId>commons-io</groupId>
-    <artifactId>commons-io</artifactId>
-    <version>2.6</version>
-  </dependency>
 </dependencies>
 ```
 
