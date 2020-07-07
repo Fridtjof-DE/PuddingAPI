@@ -24,7 +24,7 @@ public class UpdateChecker {
         checkForUpdate();
     }
 
-    private void checkForUpdate() {
+    public void checkForUpdate() {
         try {
             final HttpsURLConnection connection = (HttpsURLConnection) new URL(checkURL).openConnection();
             connection.setRequestMethod("GET");

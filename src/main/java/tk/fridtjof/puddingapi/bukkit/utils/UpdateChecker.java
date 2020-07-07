@@ -45,7 +45,7 @@ public class UpdateChecker {
         checkForUpdate();
     }
 
-    private void checkForUpdate() {
+    public void checkForUpdate() {
         new BukkitRunnable() {
             @Override
             public void run() {
