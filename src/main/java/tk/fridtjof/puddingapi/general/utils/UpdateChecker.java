@@ -1,5 +1,8 @@
 package tk.fridtjof.puddingapi.general.utils;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import javax.net.ssl.HttpsURLConnection;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -8,7 +11,7 @@ import java.net.URL;
 
 public class UpdateChecker {
 
-    Logger logger = new Logger("Update-Checker");
+    private Logger logger = LoggerFactory.getLogger(UpdateChecker.class);
     private String currentVersion;
     private String checkURL;
     private String updateURL;

@@ -1,21 +1,16 @@
 package tk.fridtjof.puddingapi.general.io;
 
-import tk.fridtjof.puddingapi.general.utils.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.*;
-import java.net.MalformedURLException;
 import java.net.URL;
 
 public class FileAPI {
 
-    private static Logger logger;
+    private static Logger logger = LoggerFactory.getLogger(File.class);
 
     public static void createDirectory(String path) {
-        createDirectory(path, false);
-    }
-
-    public static void createDirectory(String path, boolean debug) {
-        logger  = new Logger("PuddingAPI/FileAPI", debug);
 
         File file = new File(path);
         if(!file.exists()){
@@ -24,7 +19,7 @@ public class FileAPI {
         }
     }
 
-    public static void saveFile(String webFile, String localFile, boolean debug) {
+    public static void saveFile(String webFile, String localFile) {
 
         try {
             logger.info("Starting download of " + webFile);
@@ -50,7 +45,7 @@ public class FileAPI {
             fos.close();
             in.close();
         } catch(IOException ioException) {
-            logger.error("Could");
+            logger.error("Failed!");
             ioException.printStackTrace();
         }
     }
