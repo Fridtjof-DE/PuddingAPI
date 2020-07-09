@@ -12,47 +12,42 @@ import java.util.Scanner;
 
 public class Config {
 
-    //TODO Implement YAML or JSON API
+    private String prefix = "[CONFIG]: ";
+    private String str_ind = "\"";
+    private String char_ind = "'";
 
-    private static String file_path = new String();
-    private static String file_name = new String();
-
-    private static String prefix = "[CONFIG]: ";
-    private static String str_ind = "\"";
-    private static String char_ind = "'";
+    private File file;
 
     public Config(String path, String name) {
-        file_path = path;
-        file_name = name;
+        createFile(path, name);
     }
 
-    private static File createConfig() {
-        String full_path = file_path + file_name + ".pddg";
-        File config_file = new File(full_path);
+    private void createFile(String path, String name) {
+        String full_path = path + name + ".pddg";
+        file = new File(full_path);
         try {
-            if (config_file.createNewFile()) {
+            if (file.createNewFile()) {
                 DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
                 LocalDateTime now = LocalDateTime.now();
 
-                FileWriter writer = new FileWriter(createConfig());
+                FileWriter writer = new FileWriter(file);
                 writer.write("Date of creation: " + dtf.format(now));
                 writer.close();
 
-                //System.out.println(prefix + "File is created!");
+                System.out.println(prefix + "File is created!");
             } else {
-                //System.out.println(prefix + "File already exists.");
+                System.out.println(prefix + "File already exists.");
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return config_file;
     }
 
     private boolean checkIndex(String index) {
         String line = null;
         boolean exist = false;
         try {
-            Scanner scanner = new Scanner(createConfig());
+            Scanner scanner = new Scanner(file);
             while (scanner.hasNextLine()) {
                 line = scanner.nextLine();
 
@@ -76,7 +71,7 @@ public class Config {
         String line = null;
         boolean exists = false;
         try {
-            Scanner scanner = new Scanner(createConfig());
+            Scanner scanner = new Scanner(file);
             while (scanner.hasNextLine()) {
                 line = scanner.nextLine();
 
@@ -110,7 +105,7 @@ public class Config {
         boolean check = !checkIndex(index);
 
         try {
-            Scanner scanner = new Scanner(createConfig());
+            Scanner scanner = new Scanner(file);
             while (scanner.hasNextLine()) {
                 line = scanner.nextLine();
                 lines.add(line);
@@ -121,7 +116,7 @@ public class Config {
         }
 
         try {
-            FileWriter writer = new FileWriter(createConfig());
+            FileWriter writer = new FileWriter(file);
 
             if(!check) {
                 for (String line1 : lines) {
