@@ -1,3 +1,9 @@
+[![API Badge](https://img.shields.io/badge/MC%20version-Bukkit%20v1.16.5-blue?style=flat-square)](https://www.spigotmc.org/)
+[![Latest Release Badge](https://img.shields.io/badge/latest%20release-snapshot%20of%20v2.0.0-yellow?style=flat-square)]()
+[![Dev State Badge](https://img.shields.io/badge/stage%20of%20development-beta-yellow?style=flat-square)]()
+[![Maintenance Badge](https://img.shields.io/maintenance/yes/2021?style=flat-square)]()
+[![Issue Badge](https://img.shields.io/github/issues/Fridtjof-DE/PuddingAPI?style=flat-square)](https://github.com/Fridtjof-DE/PuddingAPI/issues)
+[![Discord Online Badge](https://img.shields.io/discord/698210072899223642?style=flat-square)](https://discord.gg/HmuuMvUyCU)
 # PuddingAPI
  My personal API for my Java programs
  
@@ -79,25 +85,4 @@ class SomeClass {
 	}
 }
 ```
----
-
-## Maven Repository
-  
-```maven
-<repositories>
-  <repository>
-    <id>fridtjofsRepo</id>
-    <url>https://www.fridtjof.tk/repo</url>
-  </repository>
-</repositories>
-
-<dependencies>
-  <dependency>
-    <groupId>tk.fridtjof</groupId>
-    <artifactId>puddingapi</artifactId>
-    <version>2.1.0</version>
-  </dependency
-</dependencies>
-```
-
 ---
