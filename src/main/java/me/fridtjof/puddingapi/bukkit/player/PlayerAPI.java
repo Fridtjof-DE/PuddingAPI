@@ -1,4 +1,4 @@
-package tk.fridtjof.puddingapi.bukkit.player;
+package me.fridtjof.puddingapi.bukkit.player;
 
 import org.bukkit.entity.Player;
 

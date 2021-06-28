@@ -1,4 +1,4 @@
-package tk.fridtjof.puddingapi.general.utils;
+package me.fridtjof.puddingapi.general.utils;
 
 import java.io.IOException;
 import java.net.URL;

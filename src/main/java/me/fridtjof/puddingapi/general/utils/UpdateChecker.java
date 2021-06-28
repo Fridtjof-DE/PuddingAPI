@@ -1,4 +1,4 @@
-package tk.fridtjof.puddingapi.general.utils;
+package me.fridtjof.puddingapi.general.utils;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package tk.fridtjof.puddingapi.bukkit.utils;
+package me.fridtjof.puddingapi.bukkit.utils;
 
 import java.io.File;
 import java.io.IOException;

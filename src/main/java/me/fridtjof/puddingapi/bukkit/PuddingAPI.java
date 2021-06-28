@@ -1,8 +1,8 @@
-package tk.fridtjof.puddingapi.bukkit;
+package me.fridtjof.puddingapi.bukkit;
 
+import me.fridtjof.puddingapi.bukkit.utils.Metrics;
+import me.fridtjof.puddingapi.bukkit.utils.UpdateChecker;
 import org.bukkit.plugin.java.JavaPlugin;
-import tk.fridtjof.puddingapi.bukkit.utils.Metrics;
-import tk.fridtjof.puddingapi.bukkit.utils.UpdateChecker;
 
 public final class PuddingAPI extends JavaPlugin {
 

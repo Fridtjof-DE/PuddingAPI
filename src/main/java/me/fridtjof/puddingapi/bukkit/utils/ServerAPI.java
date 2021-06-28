@@ -1,4 +1,4 @@
-package tk.fridtjof.puddingapi.bukkit.utils;
+package me.fridtjof.puddingapi.bukkit.utils;
 
 import org.bukkit.Bukkit;
 

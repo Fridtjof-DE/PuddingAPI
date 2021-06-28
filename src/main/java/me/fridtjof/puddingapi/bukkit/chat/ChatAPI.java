@@ -1,4 +1,4 @@
-package tk.fridtjof.puddingapi.bukkit.chat;
+package me.fridtjof.puddingapi.bukkit.chat;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;

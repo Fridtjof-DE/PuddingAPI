@@ -1,4 +1,4 @@
-package tk.fridtjof.puddingapi.jda;
+package me.fridtjof.puddingapi.jda;
 
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 

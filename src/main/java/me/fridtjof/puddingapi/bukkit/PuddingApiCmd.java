@@ -1,4 +1,4 @@
-package tk.fridtjof.puddingapi.bukkit;
+package me.fridtjof.puddingapi.bukkit;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;

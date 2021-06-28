@@ -1,4 +1,4 @@
-package tk.fridtjof.puddingapi.bukkit.items;
+package me.fridtjof.puddingapi.bukkit.items;
 
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;

@@ -1,8 +1,8 @@
-package tk.fridtjof.puddingapi.bukkit.utils;
+package me.fridtjof.puddingapi.bukkit.utils;
 
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
-import tk.fridtjof.puddingapi.bukkit.chat.ChatAPI;
+import me.fridtjof.puddingapi.bukkit.chat.ChatAPI;
 
 public class Logger {
 
