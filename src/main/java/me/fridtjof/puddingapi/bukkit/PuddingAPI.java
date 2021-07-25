@@ -1,5 +1,6 @@
 package me.fridtjof.puddingapi.bukkit;
 
+import me.fridtjof.puddingapi.bukkit.utils.Logger;
 import me.fridtjof.puddingapi.bukkit.utils.Metrics;
 import me.fridtjof.puddingapi.bukkit.utils.UpdateChecker;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -15,6 +16,8 @@ public final class PuddingAPI extends JavaPlugin {
     public static PuddingAPI getInstance() {
         return instance;
     }
+
+    Logger logger = new Logger(this);
 
     @Override
     public void onEnable() {
