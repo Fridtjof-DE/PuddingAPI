@@ -1,13 +1,13 @@
 package me.fridtjof.puddingapi.jda;
 
-import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
+import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
 public abstract class GuildCommand {
 
-    public GuildMessageReceivedEvent event;
+    public MessageReceivedEvent event;
     public String commandName;
 
-    public GuildCommand(String commandName, GuildMessageReceivedEvent event) {
+    public GuildCommand(String commandName, MessageReceivedEvent event) {
         this.event = event;
         this.commandName = commandName;
 

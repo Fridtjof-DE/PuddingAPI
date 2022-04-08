@@ -13,7 +13,7 @@
 
     <description>Fridtjof_DE's Java API</description>
     <properties>
-        <java.version>16</java.version>
+        <java.version>17</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     <url>https://www.fridtjof.me/</url>
@@ -76,7 +76,7 @@
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <version>1.17-R0.1-SNAPSHOT</version>
+            <version>1.18-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -87,7 +87,7 @@
         <dependency>
             <groupId>net.dv8tion</groupId>
             <artifactId>JDA</artifactId>
-            <version>4.2.0_175</version>
+            <version>5.0.0-alpha.9</version>
         </dependency>
         <dependency>
             <groupId>com.neovisionaries</groupId>
