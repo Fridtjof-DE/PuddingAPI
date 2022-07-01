@@ -4,7 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
-public class ChatAPI {
+public class ChatUtils {
 
     public static String format(String msg) {
         return format('&', msg);
@@ -16,7 +16,7 @@ public class ChatAPI {
 
     public static void sendTabList(String header, String footer) {
         for(Player player : Bukkit.getOnlinePlayers()) {
-            player.setPlayerListHeaderFooter(ChatAPI.format(header), ChatAPI.format(footer));
+            player.setPlayerListHeaderFooter(ChatUtils.format(header), ChatUtils.format(footer));
         }
     }
 }
