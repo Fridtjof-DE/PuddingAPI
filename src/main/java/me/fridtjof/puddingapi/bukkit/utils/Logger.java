@@ -2,7 +2,7 @@ package me.fridtjof.puddingapi.bukkit.utils;
 
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
-import me.fridtjof.puddingapi.bukkit.chat.ChatAPI;
+import me.fridtjof.puddingapi.bukkit.chat.ChatUtils;
 
 public class Logger {
 
@@ -33,7 +33,7 @@ public class Logger {
     }
 
     private void print(String msg, String prefix) {
-        msg = ChatAPI.format(msg);
+        msg = ChatUtils.format(msg);
         msg = prefix + "[" + plugin.getName() + "] " + msg;
         Bukkit.getServer().getConsoleSender().sendMessage(msg);
     }
