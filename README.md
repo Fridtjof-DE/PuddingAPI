@@ -4,7 +4,9 @@
 [![Maintenance Badge](https://img.shields.io/maintenance/yes/2022?style=flat-square)]()
 [![Issue Badge](https://img.shields.io/github/issues/Fridtjof-DE/PuddingAPI?style=flat-square)](https://github.com/Fridtjof-DE/PuddingAPI/issues)
 [![Discord Online Badge](https://img.shields.io/discord/698210072899223642?style=flat-square)](https://discord.gg/HmuuMvUyCU)
-# PuddingAPI
+
+# <img src="https://github.com/Fridtjof-DE/PuddingAPI/blob/master/puddingapi.png" data-canonical-src="https://github.com/Fridtjof-DE/PuddingAPI/blob/master/puddingapi.png" width="32" height="32" /> Yggdrasil
+
  My personal API for my Java programs
  
 ---
