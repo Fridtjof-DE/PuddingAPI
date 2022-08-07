@@ -40,13 +40,22 @@ public class UpdateChecker {
 
         updateMessage = "Version " + newVersion + " is available at: " + updateURL + " - " + currentVersion + " is installed!";
 
-        try {
+        VersionComparer versionComparer = new VersionComparer(currentVersion, newVersion);
+
+        if(versionComparer.newVersionAvailable()) {
+            return;
+        }
+
+        /*try {
             int newV = Integer.parseInt(newVersion.replaceAll("\\.", ""));
             int thisV = Integer.parseInt(currentVersion.replaceAll("\\.", ""));
-            if (newV <= thisV) return;
+            if (newV <= thisV) {
+                return;
+            }
+
         } catch(NumberFormatException exception) {
             if (currentVersion.equals(newVersion)) return;
-        }
+        }*/
 
         logger.warn(updateMessage);
 
