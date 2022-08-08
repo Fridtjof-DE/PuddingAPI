@@ -2,6 +2,7 @@ package me.fridtjof.puddingapi.bukkit.player;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 
 import java.util.List;
 
@@ -19,5 +20,13 @@ public class PlayerUtils {
         for(Player p : Bukkit.getOnlinePlayers()){
             arguments.add(p.getName());
         }
+    }
+
+    public static boolean hasEmptyInventory(Player player) {
+        for(ItemStack it : player.getInventory().getContents())
+        {
+            if(it != null) return false;
+        }
+        return true;
     }
 }
