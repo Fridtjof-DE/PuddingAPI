@@ -1,5 +1,5 @@
 name: PuddingAPI
-version: ${project.version}-${timestamp}
+version: ${project.version}
 main: me.fridtjof.puddingapi.bukkit.PuddingAPI
 api-version: 1.19
 authors: [Fridtjof_DE]
