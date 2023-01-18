@@ -3,6 +3,7 @@ package me.fridtjof.puddingapi.bukkit;
 import me.fridtjof.puddingapi.bukkit.utils.Logger;
 import me.fridtjof.puddingapi.bukkit.utils.Metrics;
 import me.fridtjof.puddingapi.bukkit.utils.UpdateChecker;
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class PuddingAPI extends JavaPlugin {
@@ -29,5 +30,9 @@ public final class PuddingAPI extends JavaPlugin {
     @Override
     public void onDisable() {
 
+    }
+
+    public long getVersion() {
+        return Long.parseLong(this.getDescription().getVersion());
     }
 }
