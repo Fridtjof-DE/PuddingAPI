@@ -6,9 +6,14 @@ import java.time.format.DateTimeFormatter;
 public class Logger {
 
     private boolean debugMode;
+    private String classPrefix = "";
     DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:ss");
 
     public Logger(boolean debugMode) {
+        this.debugMode = debugMode;
+    }
+    public Logger(String classPrefix, boolean debugMode) {
+        this.classPrefix = "[" + classPrefix + "] ";
         this.debugMode = debugMode;
     }
 
@@ -29,7 +34,7 @@ public class Logger {
     }
 
     private void printer(String prefix, String message) {
-        System.out.println("[" + dtf.format(LocalDateTime.now()) + "] [" + prefix + "]: " + message);
+        System.out.println("[" + dtf.format(LocalDateTime.now()) + "] [" + prefix + "]: " + classPrefix + message);
     }
 
     //setters & getters

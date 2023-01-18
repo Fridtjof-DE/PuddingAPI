@@ -12,7 +12,9 @@ import java.util.Scanner;
 
 public class Config {
 
-    private String prefix = "[CONFIG]: ";
+    private Logger logger = new Logger(true);
+
+    private String prefix = "[Config] ";
     private String str_ind = "\"";
     private String char_ind = "'";
 
@@ -34,9 +36,9 @@ public class Config {
                 writer.write("Date of creation: " + dtf.format(now));
                 writer.close();
 
-                System.out.println(prefix + "File is created!");
+                logger.info(prefix + name + ".pddg was created!");
             } else {
-                System.out.println(prefix + "File already exists.");
+                logger.info(prefix + name + ".pddg already exists.");
             }
         } catch (IOException e) {
             e.printStackTrace();
