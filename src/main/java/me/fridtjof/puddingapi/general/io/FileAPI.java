@@ -1,16 +1,16 @@
 package me.fridtjof.puddingapi.general.io;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.io.*;
 import java.net.URL;
 
 public class FileAPI {
 
-    private static Logger logger = LoggerFactory.getLogger(File.class);
+    private Logger logger;
 
-    public static void createDirectory(String path) {
+    public FileAPI(Logger logger) {
+        this.logger = logger;
+    }
+    public void createDirectory(String path) {
 
         File file = new File(path);
         if(!file.exists()){
@@ -19,7 +19,16 @@ public class FileAPI {
         }
     }
 
-    public static void saveFile(String webFile, String localFile) {
+    public void createDirectories(String path) {
+
+        File file = new File(path);
+        if(!file.exists()){
+            logger.info("Creating directory " + path + "...");
+            file.mkdirs();
+        }
+    }
+
+    public void saveFileFromWeb(String webFile, String localFile) {
 
         try {
             logger.info("Starting download of " + webFile);
