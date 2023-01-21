@@ -13,7 +13,7 @@ public class PuddingAPIVersionChecker {
         String expectedWouldBe = "Expected version would be: " + expectedVersion;
 
         if(currentPuddingVersion > expectedVersion) {
-            logger.info("PuddingAPI version is newer than expected but should work fine");
+            logger.info("PuddingAPI version is newer than expected but should work fine.");
             logger.info(expectedWouldBe);
             return;
         }
