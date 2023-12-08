@@ -11,3 +11,21 @@
 # <img src="https://github.com/Fridtjof-DE/PuddingAPI/blob/master/puddingapi.png" data-canonical-src="https://github.com/Fridtjof-DE/PuddingAPI/blob/master/puddingapi.png" width="32" height="32" /> PuddingAPI
 
 A collection of my shared libraries that I use for various projects, such as my (upcoming) Bukkit plugins. Intended use for myself only.
+
+## How to Build
+
+If you are looking to make changes, then you'll need to get both a JDK 17 and Maven installed on your computer. I recommend just using an IDE like Intellij IDEA or Eclipse.
+
+Once you have them set up you'll need to run Maven:
+
+```
+mvn package
+```
+
+Results will be in the `builds` folder, with base name
+`PuddingAPI`. The version number is made up of the current date.
+(see timestamp format in pom.xml), you'll have a file in this format:
+
+  - `PuddingAPI-yyMMddHHmm.jar`
+
+Copy this file over to the plugins folder of your Minecraft server or use it as a dependency when working on other plugins.
