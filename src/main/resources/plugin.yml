@@ -5,6 +5,7 @@ api-version: 1.20
 authors: [Fridtjof_DE]
 description: Fridtjof_DE's Java API
 website: https://www.fridtjof.me/
+folia-supported: true
 
 commands:
   puddingapi:
