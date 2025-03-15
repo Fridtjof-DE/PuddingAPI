@@ -2,6 +2,7 @@ package me.fridtjof.puddingapi.bukkit;
 
 import me.fridtjof.puddingapi.bukkit.utils.Logger;
 import me.fridtjof.puddingapi.bukkit.utils.Metrics;
+import me.fridtjof.puddingapi.bukkit.utils.ModrinthUpdateChecker;
 import me.fridtjof.puddingapi.bukkit.utils.UpdateChecker;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -22,7 +23,11 @@ public final class PuddingAPI extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        new UpdateChecker(this, 55465, "puddingapi.update");
+
+        new ModrinthUpdateChecker(this, "PSN4XhQK", "spigot");
+        //legacy update checker
+        //new UpdateChecker(this, 55465, "puddingapi.update");
+
         new Metrics(this, 8018);
         getCommand("puddingapi").setExecutor(new PuddingApiCmd());
     }
