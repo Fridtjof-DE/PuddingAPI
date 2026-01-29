@@ -19,6 +19,11 @@ import java.io.InputStreamReader;
 import java.net.URL;
 
 // UpdateChecker based on https://github.com/Benz56/Async-Update-Checker/blob/master/UpdateChecker.java
+
+
+// update checker for SpigotMC
+// moving to Modrinth...
+@Deprecated
 public class UpdateChecker {
 
     private JavaPlugin javaPlugin;

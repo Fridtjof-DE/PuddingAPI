@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+// no reason to use this
+@Deprecated
 public class Config {
 
     private Logger logger = new Logger(true);

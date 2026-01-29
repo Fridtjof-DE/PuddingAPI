@@ -3,6 +3,8 @@ package me.fridtjof.puddingapi.general.io;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+// just use a proper logger
+@Deprecated
 public class Logger {
 
     private boolean debugMode;

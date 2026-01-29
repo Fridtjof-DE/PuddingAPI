@@ -4,6 +4,8 @@ import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import me.fridtjof.puddingapi.bukkit.chat.ChatUtils;
 
+// just use standard logger
+@Deprecated
 public class Logger {
 
     private JavaPlugin plugin = null;
