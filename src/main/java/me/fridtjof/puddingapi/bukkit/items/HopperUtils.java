@@ -6,6 +6,7 @@ import org.bukkit.inventory.ItemStack;
 
 public class HopperUtils {
 
+    // rearrange items in hopper: put wanted material in slot 0
     public static boolean rearrangeHopper(Inventory inventory, Material wantedMaterial) {
 
         //check for item
