@@ -5,32 +5,53 @@ import com.google.gson.JsonArray;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.lang.module.ModuleDescriptor.Version;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.logging.Logger;
 
-//based of https://api.github.com/repos/rockquiet/joinprotection/releases/latest <3
-
 public class ModrinthUpdateChecker {
 
+    /**
+     * ModrinthUpdateChecker is a utility class for checking if a newer version of a plugin
+     * is available on Modrinth for a specific Minecraft game version and loader.
+     *
+     * It connects to the Modrinth API, fetches the latest release for the given game version
+     * and loader, and compares it against the currently running plugin version.
+     *
+     * Key Features:
+     * - Automatically logs update information to the server console.
+     * - Warns if the plugin is outdated or running a newer/development version.
+     * - Notifies when the plugin is not approved for the current game version or loader.
+     *
+     * Usage:
+     * new ModrinthUpdateChecker(pluginInstance, "modrinthProjectId", "loaderName");
+     *
+     * Note:
+     * - Requires a valid plugin instance for logging and version retrieval.
+     * - Uses Gson to parse JSON responses from the Modrinth API.
+     * - Handles basic HTTP errors and logs warnings accordingly.
+     *
+     * Based on: https://api.github.com/repos/rockquiet/joinprotection/releases/latest
+     */
     public ModrinthUpdateChecker(JavaPlugin plugin, String modrinthId, String loader) {
 
         Logger logger = plugin.getLogger();
+        logger.info("Checking for an plugin update on Modrinth...");
 
-        logger.info("Checking for an update on Modrinth...");
+        String gameVersion = BukkitUtils.getMinecraftVersion();
 
         try {
-            URL obj = new URL("https://api.modrinth.com/v2/project/" + modrinthId + "/version?game_versions=[%22" + plugin.getDescription().getAPIVersion() + "%22]&loaders=[%22" + loader + "%22]");
+            URL requestUrl = new URL("https://api.modrinth.com/v2/project/" + modrinthId + "/version?game_versions=[%22" + gameVersion + "%22]&loaders=[%22" + loader + "%22]");
 
-            HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+            HttpURLConnection con = (HttpURLConnection) requestUrl.openConnection();
             con.setRequestMethod("GET");
             con.setRequestProperty("User-Agent", "Fridtjof-DE/PuddingAPI");
 
             if (con.getResponseCode() != HttpURLConnection.HTTP_OK) {
-                logger.warning("Unable to check for updates: HTTP-" + con.getResponseMessage());
+                logger.warning("Unable to check for updates: HTTP " + con.getResponseCode() + " " + con.getResponseMessage());
+                logger.warning("Requested URL: " + requestUrl.toString());
                 return;
             }
 
@@ -45,8 +66,8 @@ public class ModrinthUpdateChecker {
 
             JsonArray jsonResponse = new Gson().fromJson(response.toString(), JsonArray.class);
 
-            if (jsonResponse.get(0) == null) {
-                logger.warning("The plugin has not been approved for this version of the game or loader. You proceed at your own risk.");
+            if (jsonResponse.isEmpty()) {
+                logger.warning("Modrinth's response is empty: Probably The plugin has not been approved for this version of the game or loader. You proceed at your own risk.");
                 return;
             }
             Version latest = Version.parse(jsonResponse.get(0).getAsJsonObject().get("version_number").getAsString());
@@ -66,7 +87,7 @@ public class ModrinthUpdateChecker {
 
         } catch (Exception e) {
             logger.warning("An exception occurred while checking for an update: " + e.getMessage());
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
     }
 }
