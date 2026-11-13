@@ -19,8 +19,6 @@ public final class PuddingAPI extends JavaPlugin {
         return instance;
     }
 
-    Logger logger = new Logger(this);
-
     @Override
     public void onEnable() {
 
