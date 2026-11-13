@@ -68,6 +68,7 @@ public class ModrinthUpdateChecker {
 
             if (jsonResponse.isEmpty()) {
                 logger.warning("Modrinth's response is empty: Probably The plugin has not been approved for this version of the game or loader. You proceed at your own risk.");
+                logger.warning("Requested URL: " + requestUrl.toString());
                 return;
             }
             Version latest = Version.parse(jsonResponse.get(0).getAsJsonObject().get("version_number").getAsString());
