@@ -2,6 +2,9 @@ package me.fridtjof.puddingapi.bukkit.utils;
 
 import org.bukkit.Bukkit;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  * BukkitsUtils is a general-purpose utility class for interacting with the Bukkit server.
  *
@@ -10,17 +13,26 @@ import org.bukkit.Bukkit;
  */
 public class BukkitUtils {
 
+    private static final Pattern VERSION_PATTERN = Pattern.compile("^(\\d+\\.\\d+(?:\\.\\d+)?)");
+
     /**
-     * Returns the current Minecraft version of the server.
-     * Example output: "1.21.1"
+     * Returns the current Minecraft version extracted from Bukkit.getBukkitVersion().
+     * Supports both old formats ("1.19.4-R0.1-SNAPSHOT")
+     * and new formats ("26.1.2.build.63-stable").
      *
      * @return Minecraft version as a string
      */
     public static String getMinecraftVersion() {
-        // Get the Bukkit version string, e.g., "1.21.1-R0.1-SNAPSHOT"
         String rawVersion = Bukkit.getBukkitVersion();
 
-        // Split at the first dash and take the first part to get "1.21.1"
+        // Get the Bukkit version string, e.g., "1.21.1-R0.1-SNAPSHOT"
+        Matcher matcher = VERSION_PATTERN.matcher(rawVersion);
+        if (matcher.find()) {
+            return matcher.group(1);
+        }
+
+        // Fallback
         return rawVersion.split("-")[0];
     }
 }
+
